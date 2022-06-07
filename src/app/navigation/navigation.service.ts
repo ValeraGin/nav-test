@@ -91,7 +91,7 @@ export class NavigationService {
     this.currentNavItem.setFocused(true);
   }
 
-  focusedDeleted(deletedFocused: NavigationId, indexChild: number) {
+  focusedDeleted(parent: NavigationId, indexChild: number) {
 
     function findFocusInParent(parent: NavigationId) {
       const focus = parent.findFocus(null, false);
@@ -102,10 +102,11 @@ export class NavigationService {
       }
     }
 
-    if (deletedFocused.parent.children.length > indexChild && deletedFocused.parent.children[indexChild]?.focusable) {
-      this.changeFocusToAnotherNavItem(deletedFocused.parent.children[indexChild], null, false)
+
+    if (parent.children.length > (indexChild - 1) && parent.children[(indexChild - 1)]?.focusable) {
+      this.changeFocusToAnotherNavItem(parent.children[(indexChild - 1)], null, false)
     } else {
-      const focus = findFocusInParent(deletedFocused);
+      const focus = findFocusInParent(parent);
       if (focus) {
         this.changeFocusToAnotherNavItem(focus, null, false)
       } else {

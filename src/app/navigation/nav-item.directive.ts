@@ -189,10 +189,10 @@ export class NavItemDirective implements OnInit, DoCheck, OnChanges, AfterConten
 
   unregisterChild(child: NavItemDirective) {
     const indexChild = this.children.indexOf(child);
-    delete this.children[indexChild];
+    this.children = this.children.filter(c => c !== child);
     this.createAutoLinks(true);
     if (child.focused) {
-      this.navigationService.focusedDeleted(child, indexChild)
+      this.navigationService.focusedDeleted(child.parent, indexChild)
     }
   }
 

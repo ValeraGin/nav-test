@@ -44,7 +44,7 @@
     <div *ngFor="let item of items"  class="col-3 mb-2">
       <div class="h-100 p-3 text-white bg-dark rounded-3">
         <h2>Text</h2>
-        <button appNavItem focusable needScroll class="btn btn-outline-light" type="button" (click)="deleteItem(item)">Удалить {{item}}</button>
+        <button appNavItem focusable needScroll class="btn btn-outline-light" type="button" (click)="deleteItem(item)" [id]="'post_'+ item">Удалить {{item}}</button>
       </div>
     </div>
   </div>
