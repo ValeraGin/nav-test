@@ -105,6 +105,37 @@
           }
         }
       }
+    },
+    "ng-spatial-navigation": {
+      "projectType": "library",
+      "root": "projects/ng-spatial-navigation",
+      "sourceRoot": "projects/ng-spatial-navigation/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ng-spatial-navigation/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-spatial-navigation/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-spatial-navigation/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-spatial-navigation/src/test.ts",
+            "tsConfig": "projects/ng-spatial-navigation/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-spatial-navigation/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "nav"
